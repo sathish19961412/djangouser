@@ -19,6 +19,8 @@ def register(request):
 
        if password1==password2:
             user=User.objects.create_user(username=name,email=email,password=password1)
+            user.is_staff=True
+            user.is_superuser=True
             user.save()
             messages.success(request,'Your account has been Created')
             return redirect('Login')
